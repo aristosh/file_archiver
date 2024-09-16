@@ -8,6 +8,10 @@ use Getopt::Long;
 
 my @files = @ARGV;
 
+if(!@files) {
+  print "Usage : archiver [file1] [file2] ... [fileN]\n";
+  exit 3;
+}
 
 #GetOptions(
 #  'file=s{,}' => \@files,
