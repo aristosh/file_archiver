@@ -6,10 +6,12 @@ use strict;
 use DateTime;
 use Getopt::Long;
 
-GetOptions(
-  'file=s{,}' => \my @files,
-) or die "Invalid options passed to $0\n";
+my @files = @ARGV;
 
+
+#GetOptions(
+#  'file=s{,}' => \@files,
+#) or die "Invalid options passed to $0\n";
 
 my $archiveDir = ".archives";
 my $now = DateTime->now;
@@ -23,7 +25,7 @@ foreach(@files) {
   my $file =  $_;
 
   my $archivedFile = "$archiveDir/[$datetime][$file]";
-  system("mv", "-f", $file, $archivedFile) or die "File not found";
+  system("mv", "-f", $file, $archivedFile); 
 
   print "File $file has been archived to $archivedFile\n";
 }
