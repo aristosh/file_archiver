@@ -16,7 +16,8 @@ my $time = $now->hms;
 my $datetime = "$date$time";
 
 if(!@files) {
-  print "Usage : archiver [option] -- [file1] [file2] ... [fileN]\n";
+  print "Usage 1 : archiver [file1] [file2] ... [fileN]\n";  
+  print "Usage 2 : archiver [--purge | --list]\n";
   exit 3;
 }
 
@@ -38,7 +39,7 @@ if($purge) {
 }
 
 $datetime =~ s/[^0-9]//g;
-system("mkdir", "-p", $archiveDir);
+system "mkdir", "-p", $archiveDir;
 
 foreach(@files) {
   my $file =  $_;
